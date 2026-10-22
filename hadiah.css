@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('853995148126872525.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Patrick Hand', cursive, sans-serif;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Kotak Kad Utama (Glassmorphism + Retro Border) */
+.gift-card-container {
+  position: relative;
+  width: 420px;
+  max-width: 95vw;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 35px 20px 25px 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), 
+              inset 0 0 15px rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  z-index: 10;
+}
+
+/* Butang Back Arrow Cantik */
+.back-arrow {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  color: #800020;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+  z-index: 20;
+}
+
+.back-arrow:hover {
+  transform: translateX(-4px);
+  color: #ff3366;
+}
+
+/* Tajuk di atas kad */
+.card-header-title h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 16px;
+  color: #6b091a;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
+  letter-spacing: 0.5px;
+}
+
+/* Bingkai Gambar Gaya Polaroid */
+.polaroid-frame {
+  background: #ffffff;
+  padding: 12px 12px 28px 12px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: rotate(-1deg); /* Nampak bersahaja/senget sikit macam polaroid betul */
+  transition: transform 0.3s ease;
+}
+
+.polaroid-frame:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+/* Saiz Gambar di Tengah */
+.center-gift-image {
+  width: 260px;
+  height: 310px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+/* Teks kecil di bawah gambar polaroid */
+.polaroid-caption {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #777777;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   KESAN BUNGA API MERIAH DI LATAR BELAKANG
+   ========================================== */
+.fireworks-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1; 
+}
+
+.firework-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+  animation: explode 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes explode {
+  0% {
+    transform: translate(0, 0) scale(1.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   KOD KHAS UNTUK VERSI TELEFON (MOBILE RESPONSIVE)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  /* Kotak kad utama diselaraskan dengan skrin telefon */
+  .gift-card-container {
+    width: 90vw;
+    padding: 25px 15px 20px 15px;
+    border-radius: 18px;
+  }
+
+  /* Kecilkan tajuk dikit supaya tidak melimpah */
+  .card-header-title h2 {
+    font-size: 13px;
+    margin-bottom: 15px;
+  }
+
+  /* Laraskan saiz bingkai polaroid untuk telefon */
+  .polaroid-frame {
+    padding: 10px 10px 22px 10px;
+  }
+
+  /* Kecilkan saiz gambar supaya muat skrin kecil */
+  .center-gift-image {
+    width: 210px;
+    height: 250px;
+  }
+
+  /* Saiz kapsyen teks bawah gambar */
+  .polaroid-caption {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  /* Kedudukan back arrow pada peranti mudah alih */
+  .back-arrow {
+    font-size: 1.5rem;
+    top: 12px;
+    left: 15px;
+  }
+}

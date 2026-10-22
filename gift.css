@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* Latar belakang gambar */
+  background-image: url('853995148126872525.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Press Start 2P', monospace, cursive;
+  padding: 20px;
+}
+
+/* Kontena Utama Kad (Versi Lutsinar / Glassmorphism) */
+.gifts-container {
+  position: relative; /* Penting untuk kedudukan back-arrow */
+  width: 100%;
+  max-width: 800px;
+  
+  /* BEKALAN WARNA LUTSINAR & BORDER */
+  background-color: rgba(255, 255, 255, 0.2); 
+  border: 1px solid rgba(255, 255, 255, 0.4); 
+  border-radius: 16px;
+  backdrop-filter: blur(8px); 
+  -webkit-backdrop-filter: blur(8px); 
+  
+  padding: 50px 30px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling untuk Butang Back Arrow di Kiri Atas */
+.back-arrow {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity 0.2s, transform 0.2s;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.back-arrow:hover {
+  opacity: 1;
+  transform: translateX(-3px);
+}
+
+/* Tajuk "my gifts for you" */
+.main-title {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-bottom: 50px;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Susunan 3 Ikon (Grid) - Selari di tengah */
+.gifts-grid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center !important;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Kad / Item Individu */
+.gift-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  width: 200px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.gift-item:hover {
+  transform: translateY(-8px); 
+}
+
+/* Kotak Ikon */
+.icon-box {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* Saiz Ikon Standard (Surat & Piring Hitam) */
+.pixel-icon {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  image-rendering: pixelated; 
+}
+
+/* GAMBAR HADIAH DIBESARKAN */
+.present-icon {
+  width: 120px !important;
+  height: 120px !important;
+}
+
+/* Label Teks Kecil di Bawah Ikon */
+.gift-label {
+  color: #ffffff;
+  font-size: 0.55rem;
+  line-height: 1.5;
+  text-transform: lowercase;
+  opacity: 0.9;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* --- RESPONSIVE TELEFON (MOBILE) --- */
+@media screen and (max-width: 600px) {
+  .gifts-container {
+    padding: 35px 15px 25px 15px;
+  }
+
+  .back-arrow {
+    top: 10px;
+    left: 15px;
+    font-size: 1rem;
+  }
+
+  .main-title {
+    font-size: 0.9rem;
+    margin-bottom: 35px;
+  }
+
+  .gifts-grid {
+    flex-direction: column;
+    align-items: center !important;
+    gap: 35px;
+  }
+
+  .gift-item {
+    width: 100%;
+  }
+
+  .icon-box {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 12px;
+  }
+
+  .pixel-icon {
+    width: 65px;
+    height: 65px;
+  }
+
+  .present-icon {
+    width: 95px !important;
+    height: 95px !important;
+  }
+
+  .gift-label {
+    font-size: 0.5rem;
+    height: auto;
+  }
+}

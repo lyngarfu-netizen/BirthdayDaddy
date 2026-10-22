@@ -1,0 +1,287 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Patrick Hand', cursive, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    margin: 0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Lapisan khas untuk gambar latar belakang yang kabur */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Tukar 'nama_gambar.jpg' kepada nama fail gambar anda */
+    background-image: url('853995148126872525.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* Di sini tempat tetapkan tahap kabur (blur) */
+    filter: blur(4px); 
+    
+    /* Tolak lapisan ini ke belakang sekali supaya tidak menutup teks/kotak */
+    z-index: -1; 
+    
+    /* (Optional) Tambah sedikit kesan gelap/cerah pada gambar */
+    /* transform: scale(1.05); mencegah tepi gambar kelihatan putih semasa blur */
+}
+
+.songs-container {
+    position: relative;
+    width: 850px;
+    height: 500px;
+    background-color: rgba(225, 90, 90, 0.35); /* Warna maroon gelap */
+    backdrop-filter: blur(4px);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    border: 1px solid rgba(221, 143, 143, 0.4);
+}
+
+/* Tajuk */
+.header-title {
+    text-align: center;
+    z-index: 10;
+}
+
+.header-title h1 {
+    color: #070707;;
+    font-size: 32px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Bahagian Piring Hitam & Polaroid */
+.vinyl-section {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Rekaan Piring Hitam Berputar */
+.vinyl-record {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    background-color: #1a1a1a;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border: 4px solid #333;
+    animation: spinVinyl 3s linear infinite;
+}
+
+/* Garisan Piring Hitam */
+.vinyl-grooves {
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+}
+
+/* Label Merah di Tengah Piring Hitam & Nama Lagu */
+.vinyl-label {
+    width: 100px;
+    height: 100px;
+    background-color: #800020;
+    border-radius: 50%;
+    border: 3px solid #b33b54;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.song-title-label {
+    font-size: 11px;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0 10px;
+    letter-spacing: 0.5px;
+}
+
+.vinyl-label::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 18px;
+    background-color: #1a1a1a;
+    border-radius: 50%;
+    z-index: 2;
+}
+/* Ikon Anak Panah Kembali ke Kiri */
+.back-arrow {
+    position: absolute;
+    bottom: 15px;
+    left: 20px; /* Tukar dari right ke left */
+    z-index: 20;
+}
+
+/* Gaya Bingkai Polaroid */
+.polaroid-item {
+    position: absolute;
+    background: #ffffff;
+    padding: 8px 8px 25px 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 190px;
+}
+
+.polaroid-item img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+}
+
+.polaroid-item.p1 { 
+    top: 5px; 
+    left: 40px; /* <--- Ubah nilai ni */
+    transform: rotate(-6deg); 
+    z-index: 4; 
+}
+
+.back-arrow a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #800020; /* Merah Maroon */
+    color: #ffffff;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
+}
+
+.back-arrow a:hover {
+    transform: scale(1.1);
+}
+
+/* Animasi Putar Piring Hitam */
+@keyframes spinVinyl {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Container & Gaya Hujan Nota Muzik */
+.note-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.music-note {
+    position: absolute;
+    top: -30px;
+    font-size: 20px;
+    user-select: none;
+    animation: fallNote linear forwards;
+}
+
+@keyframes fallNote {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+}
+
+/* ==========================================
+   KOD KHAS UNTUK VERSI TELEFON (MOBILE VIEW)
+   ========================================== */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    /* Kotak utama dikecilkan ikut skrin phone */
+    .songs-container {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        min-height: 480px;
+        padding: 20px 15px;
+    }
+
+    /* Saiz tajuk disesuaikan agar tidak terlalu besar */
+    .header-title h1 {
+        font-size: 22px;
+    }
+
+    /* Bahagian piring hitam dikecilkan sikit (dari 280px ke 220px) */
+    .vinyl-section {
+        height: 280px;
+    }
+
+    .vinyl-record {
+        width: 220px;
+        height: 220px;
+    }
+
+    .vinyl-grooves {
+        width: 180px;
+        height: 180px;
+    }
+
+    .vinyl-label {
+        width: 80px;
+        height: 80px;
+    }
+
+    .song-title-label {
+        font-size: 9px;
+    }
+
+    /* Bingkai Polaroid dikecilkan untuk skrin phone */
+    .polaroid-item {
+        width: 130px;
+        padding: 6px 6px 20px 6px;
+    }
+
+    .polaroid-item img {
+        height: 110px;
+    }
+
+    /* Kedudukan polaroid dilaraskan supaya duduk elok dalam skrin kecil */
+    .polaroid-item.p1 {
+        top: -10px;
+        left: 10px;
+        transform: rotate(-5deg);
+    }
+}

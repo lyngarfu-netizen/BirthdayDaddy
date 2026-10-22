@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Gifts For You</title>
+  
+  <!-- Font gaya Pixel / Retro (Press Start 2P) dari Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="gift.css">
+</head>
+<body>
+
+  <!-- Kontena Utama -->
+  <div class="gifts-container">
+    
+    <!-- Butang Back (Arrow) di Penjuru Atas Kiri -->
+    <a href="home.html" class="back-arrow">&larr;</a>
+
+    <!-- Tajuk Utama -->
+    <h1 class="main-title">my gifts for you</h1>
+
+    <!-- Kad/Grid Pilihan Hadiah -->
+    <div class="gifts-grid">
+      
+      <!-- Item 1: Message -->
+      <a href="Message.html" class="gift-item">
+        <div class="icon-box">
+          <img src="Envelop.png" alt="Envelope" class="pixel-icon">
+        </div>
+        <p class="gift-label">my message for you</p>
+      </a>
+
+      <!-- Item 2: Camera / Memories -->
+<a href="Song.html" class="gift-item" onclick="localStorage.setItem('autoPlayMusic', 'true');">
+    <div class="icon-box">
+        <img src="PiringHitam.png" alt="Song" class="pixel-icon">
+    </div>
+    <p class="gift-label">Song for you</p>
+</a>
+
+      <!-- Item 3: Gift Box (Besar) -->
+      <a href="hadiah.html" class="gift-item">
+        <div class="icon-box">
+          <img src="hadiah.png" alt="Gift" class="pixel-icon present-icon">
+        </div>
+        <p class="gift-label">my gift for you</p>
+      </a>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
